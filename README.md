@@ -97,3 +97,52 @@ to create a file use open() with one of the following parameter
 - we can delete a folder using os.rmdir()
 - we can only remove the empty folder
 - if we will not chk the path then we will try to remove the file wich dont exist it will give an error
+
+# Python Try Except
+
+python try except handles errors in the code ,it controls when something goes wrong or works fine
+
+- try: test the block of code that might cause error(error aaskta h ya nai aaskta)
+- catch: runs if error happens
+- else:runs if no error happens
+- finally:runs in both cases if the error happens or not
+
+## Exception Handling
+
+jab error aata h ya exception(actual error happens in try) aati h q k hum ny exception ko call kia tha to python normally stop ho jay ge aor error messsage generate kry ge
+
+- Exception means the actual error happens in try block
+- exception will be handled in except block
+- if try block raises an eror except block will run
+- without try block the program will crash and raise error
+- with try except block message will apear instaed of error
+- bcz we are handling the error happens in try block
+- to show multiple error msgs we can use as many exception blocks as we want
+- python dont allow us to use multiple blank except blocks
+- we need to use multiple exception types in seprate except blocks except with the last one
+
+### NameError(exception type)
+
+is a specific type of error in python it happens when we use variable,class or function that we nevr defined
+
+### Exception as e
+
+we can use in except block to chk what exct error is in try block
+
+#### Note :
+
+we can study more error types or built-in exceptions on w3 schools
+
+## Else
+
+if try block does not generate any error the else code block will run
+
+## finally
+
+- finally code block will msut run regardless of if the error happens or not
+- sometimes we need to run a code in both casses if the error happens or not
+- like the following cases
+  - close the file
+  - clear the resources
+  - close DB connection
+  - print final message
