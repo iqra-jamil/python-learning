@@ -45,7 +45,7 @@ print("file handling")
 #     os.remove("newdemofile.txt")
 # else:
 #     print("file does not exist")
-
+## file seeking (to figure out whre the cursor is)
 # with open("demofile.txt" ,"rt") as f :
 #  print(f.tell())
 #  print(f.read(5))
@@ -54,7 +54,7 @@ print("file handling")
 #  print(f.tell())
 ## temporary files
 # import tempfile
-
+## temporary files
 # with tempfile.NamedTemporaryFile(delete=False) as tmp:
 #     print(tmp.write(b"MY temporary file"))
 #     print(tmp.name)
@@ -69,7 +69,7 @@ print("file handling")
 # shutil.rmtree("folderpath") 
 # #will take zip file name ,format like zip/tar(use in mac/linux) , and the folder we want to zip
 # shutil.make_archive("basname","zip","root_dir")
-
+## csv- comma seprated vallues
 #import csv
 
 # with open("data.csv","r" ) as f:
@@ -104,10 +104,16 @@ p=path("path")
 #it chks if the file/folder exist or not return True/False
 p.exists()
 #reads and returns the file content as string
-p.read_text()
+p.read_text() #read txt files
 #writes the given string to the file
-p.write_text("data likho")
+
+p.write_text("data likho") #write into txt files
 #chks folder name of the file (jo hum ny path() main dia hoa h)
 p.parent
 #returns file extension like .txt
 p.suffix 
+#to read/write binary files like imagesand PDfs we can use :
+p.read_bytes()
+p.write_bytes()
+
+

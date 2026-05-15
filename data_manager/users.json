@@ -1,0 +1,52 @@
+{
+    "user1": {
+        "name": "iqra",
+        "age": 23,
+        "student": true,
+        "hobbies": [
+            "codding",
+            "music",
+            "reading"
+        ]
+    },
+    "user3": {
+        "name": "sara",
+        "age": 26,
+        "student": true,
+        "hobbies": [
+            "cooking",
+            "climbing",
+            "collecting coins"
+        ]
+    },
+    "user4": {
+        "name": "ali",
+        "age": 32,
+        "student": false,
+        "hobbies": [
+            "traveling",
+            "music",
+            "coding"
+        ]
+    },
+    "user5": {
+        "name": "ja",
+        "age": 38,
+        "student": false,
+        "hobbies": [
+            "traveling",
+            "dancing",
+            "coding"
+        ]
+    },
+    "user6": {
+        "name": "ij",
+        "age": 23,
+        "student": true,
+        "hobbies": [
+            "traveling",
+            "dancing",
+            "coding"
+        ]
+    }
+}

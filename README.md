@@ -155,13 +155,12 @@ if try block does not generate any error the else code block will run
 
 ## 2. File Paths — os and pathlib
 
-- they dont care about files/folders content
 - both work with any file type txt, csv, json, pdf, etc. They don't care about the file type, they just work with paths and folders.
 - we already studeied os.remove() and os.path.exist() but we have much more
 - os only manages file/folders(create,delte,rename,chk if paths exist etc)
 - pathlib is a modern cleaner way to work with file paths instead of os
 - pathlib do all what os do but os cant read/write files pathlib can
-- pathlib read/write files without using open()
+- pathlib read/write text/binary files without using open()
 
 ## 3. Working with CSV Files
 
@@ -239,6 +238,6 @@ we read/write the binary files same as we read/write txt files but they are for 
 - file exist kry ge jab tak "with"block run horha h incase delte=False kia hoa h
 - delete=True case main hum us link pr jaa kr us ko vist krsty hain wo program execution k baad bhi exist kry ge
 
-### Note: write("txt") function returns the number of bytes written in the file if we wrint it it will print number of bytes
+#### Note: write("txt") function returns the number of bytes written in the file if we wrint it it will print number of bytes
 
-### Note: 1 character = 1 bytes for normal english txt(count number of bytes in a string)
+#### Note: 1 character = 1 bytes for normal english txt(count number of bytes in a string)
