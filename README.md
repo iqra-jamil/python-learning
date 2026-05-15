@@ -146,3 +146,99 @@ if try block does not generate any error the else code block will run
   - clear the resources
   - close DB connection
   - print final message
+
+# More about file handling
+
+## 1. Exception Handling with Files
+
+         already done
+
+## 2. File Paths — os and pathlib
+
+- they dont care about files/folders content
+- both work with any file type txt, csv, json, pdf, etc. They don't care about the file type, they just work with paths and folders.
+- we already studeied os.remove() and os.path.exist() but we have much more
+- os only manages file/folders(create,delte,rename,chk if paths exist etc)
+- pathlib is a modern cleaner way to work with file paths instead of os
+- pathlib do all what os do but os cant read/write files pathlib can
+- pathlib read/write files without using open()
+
+## 3. Working with CSV Files
+
+- CSV- stands for comma seprated values
+- they are the files we use to store data in rows and columns by seprating them using comma
+- we can read them or write into them using
+  - csv.reader(f) #read
+  - csv.writer(f) #write
+- both take file object as an argumnt
+- reader() dont directly return data as normaly read() function do in txt
+
+- instead reader will return an object
+- it read the data row by row so we need to loop through it
+- writer() also return an object instead we use .writerow() or writerows() function to write a row or rows in a file
+- reader frst convert csv data into python list wich should must have comma seprated data,csv can have any seprator
+- writer convert that list back to csv
+- they alos works like json functions
+
+## 4. Working with JSON Files
+
+- json.load(f)
+  - it necassirly take only one parameter ,file object the file which we open in read mode
+    data=json.load(file)
+  - we have content in the opened file wich is "file" and we are loading that opened file and storeing that in data
+  - now we have content in "data"
+  - read json file and convert it into python structure
+  - it convert json->python and read the json file at the same time
+- json.dump(data,f)
+  - it necassirily take two arguments
+    file object(the file wich we opend in write mode and the data object) & data object containing content
+    json.dump(data,file)
+  - it write into the file and convert that python file back into json structure
+  - it convert and writes into json file at the same time
+  - indent etc are optional for formatting
+
+## 5. File Handling with shutil
+
+- we import use this module to copy,move,archieve files
+- frst we import this built-in modeule and then use its functions
+- it also provide a function to dlete a non-empty folder bcz use it as alternatove of
+  os.remove() bcz wo srf empty folders ko remove krta h
+
+## 6. Reading/Writing Binary Files
+
+we read/write the binary files same as we read/write txt files but they are for images
+
+- data=fileobj.read() read should have no argument in both txt/binary cases
+- fileobj.write(data) should must have data object the file wich is containing images/data as an argument
+- fileobj.write()
+
+## 7. File Seeking — seek() and tell()
+
+- tell() - f.tell() tells us the current position of the cursor
+- takes no argument
+- by default 0 say start hota h
+- seek()- f.seek(n) moves the cursor the position n
+- if n is 10 it will move cursor from 0 to 10
+- takes number of character as an argument where we want to move cursor
+- cursor 0 sy n tak jump kry ga
+- tell() and seek() both start counting from 0 not 1
+
+## 8. Temporary Files
+
+- we need to import built in module frst to create temp files
+- module name is tempfile
+- we dont need to open such files using open()
+- instaed we use NamedTemporaryFile() modeule provided function this function open ,create and generate name and path of the temporary file automaticaly on our system
+- temporary files wo files hoti hain jin main hum wo data write krty hain jo humy srf temporarily chaiy during the program
+- we use them like a rough paper we solve our problem and then through them away
+- yeh program close hony par automaticly dlete ho jati hain until hum ny tempfile.NamedTemporaryFile k argumnt main dlete=False nahi set kia
+- in files main hum data bytes format main likhty hain like string sy phly "b"use krna hota h
+- most of the time in files main write he kia jata h
+- rare cases main read kia jata h in files ko
+- temporary file srf or srf during the execution of program exist krti h us k forn baad delte ho jati h
+- file exist kry ge jab tak "with"block run horha h incase delte=False kia hoa h
+- delete=True case main hum us link pr jaa kr us ko vist krsty hain wo program execution k baad bhi exist kry ge
+
+### Note: write("txt") function returns the number of bytes written in the file if we wrint it it will print number of bytes
+
+### Note: 1 character = 1 bytes for normal english txt(count number of bytes in a string)
