@@ -103,7 +103,7 @@ to create a file use open() with one of the following parameter
 python try except handles errors in the code ,it controls when something goes wrong or works fine
 
 - try: test the block of code that might cause error(error aaskta h ya nai aaskta)
-- catch: runs if error happens
+- catch: runs if error happens (its not only to print the error msg we can handle wht should be happen in case of eror)
 - else:runs if no error happens
 - finally:runs in both cases if the error happens or not
 
@@ -241,3 +241,9 @@ we read/write the binary files same as we read/write txt files but they are for 
 #### Note: write("txt") function returns the number of bytes written in the file if we wrint it it will print number of bytes
 
 #### Note: 1 character = 1 bytes for normal english txt(count number of bytes in a string)
+
+#### Note : any variable we want to use outside try except we should initiaize it before try except block
+
+#### Note: before writing the the code we may dont have idea wht type of exception may occur in try block we can use "Exception as e" exception to know exact error bcz it can catch anytype of error then we can replace it with specific exception
+
+#### if you have nested dict and you are looping over dict_name then it will return keys so it will not loop over thier values so we need to use dict_name.values() to get thier values(inner dictionaries)
