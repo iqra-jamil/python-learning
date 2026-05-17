@@ -14,3 +14,8 @@ for user in my_dict.values():
   if user["id"]==my_id:
    user_found=user
 print(user_found)
+print(my_dict)
+def remove_user(user):
+  my_dict.pop(user)
+remove_user("user1")
+print("after",my_dict)

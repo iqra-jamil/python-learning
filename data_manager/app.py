@@ -1,7 +1,7 @@
 import json
 default_data={
       "user3":{
-        "id": 1,
+        "id": 2,
          "name": "sara",
         "age": 26,
         "student": True,
@@ -23,37 +23,39 @@ def load_data():
      data=json.load(f)
      print(data)
      File_loaded = True
+     print("loading from file")
  except FileNotFoundError: #to be specific
    print("file not found")
    data=default_data.copy()
-
+   print("loading default")
  except Exception as e:
    print("broken",e)
    data=default_data.copy()
+   print("loading default")
 load_data()
 #.................adding new users..................................
 ##############harcodede################################################
-data['user4']={'id':2,'name':'ali','age':32,'student':False, 'hobbies': [
-            "traveling",
-            "music",
-            "coding"
-        ]}
-# data.update(user4)
+# data['user4']={'id':2,'name':'ali','age':32,'student':False, 'hobbies': [
+#             "traveling",
+#             "music",
+#             "coding"
+#         ]}
+# # data.update(user4)
 
-user5={'id': 3,'name':'ja','age':38,'student':False, 'hobbies': [
-            "traveling",
-            "dancing",
-            "coding"
-        ]}
-user6={ 'id': 4,'name':'ij','age':23,'student':True, 'hobbies': [
-            "traveling",
-            "dancing",
-            "coding"
-        ]}
+# user5={'id': 3,'name':'ja','age':38,'student':False, 'hobbies': [
+#             "traveling",
+#             "dancing",
+#             "coding"
+#         ]}
+# user6={ 'id': 4,'name':'ij','age':23,'student':True, 'hobbies': [
+#             "traveling",
+#             "dancing",
+#             "coding"
+#         ]}
 
-#data.update(user5) only keys not as a whole entry
-data['user5']=user5
-data["user6"]=user6
+# #data.update(user5) only keys not as a whole entry
+# data['user5']=user5
+# data["user6"]=user6
 #adding user by function
 def add_user(key,dict_value):
   #key name ko dictionary as a value assign ho jay
@@ -66,15 +68,20 @@ add_user('user7',{'id': 7,'name':'iquu','age':23,'student':True, 'hobbies': [
         ]})
   
 #.................remove the user.................................
-def remove_user():
-  #remove user2 we can use .pop to reomev a user
- data.pop("users2")
-#we can also remove wrong keys we added using .update 
- data.pop("name")
- data.pop("age")
- data.pop('student')
- data.pop("hobbies")
-#remove_user()
+###hard coded
+# def remove_user():
+#   #remove user2 we can use .pop to reomev a user
+#  data.pop("users2")
+# #we can also remove wrong keys we added using .update 
+#  data.pop("name")
+#  data.pop("age")
+#  data.pop('student')
+#  data.pop("hobbies")
+# #remove_user()
+##function to remove user
+def remove_user(user):
+    data.pop(user)
+#remove_user('user4')
 #.................chk type of age ..................................
 age=None
 def age_format():
@@ -130,6 +137,6 @@ print("alll done.............!!!!!!!!!")
 
 ##.................the improvements we can do..................................
 #take a number from user and run functions on the base of that
-#instead of hardcoding we can remove a user dynamically by looping over users and taking input form user
-#same for update etc as we are finding user by id
+#instead of hardcoding we can remove a user dynamically by looping over users and taking input form user by finding id
+
 
