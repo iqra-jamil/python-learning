@@ -30,8 +30,9 @@ def load_data():
    print("loading default")
  except Exception as e:
    print("broken",e)
-   data=default_data.copy()
-   print("loading default")
+   #data=default_data.copy() 
+   #should not have default data in case the file is broken it should warning and exit the program
+   exit()
 load_data()
 #.................adding new users..................................
 ##############harcodede################################################
@@ -82,7 +83,8 @@ add_user('user7',{'id': 7,'name':'iquu','age':23,'student':True, 'hobbies': [
 def remove_user(user):
     data.pop(user)
 #remove_user('user4')
-#.................chk type of age ..................................
+#.................chk type of age +update age ..................................
+#age_format should accept age as argument not asked inside the function
 age=None
 def age_format():
  try:
@@ -104,6 +106,7 @@ print(data)
 
 
 ##.................find user by Id..................................
+#find_user should accept id as argument instaed of taking input inside function
 def find_user():
  my_id=int(input("enter id : "))
  Found_User=None
@@ -134,9 +137,11 @@ print("alll done.............!!!!!!!!!")
 #we can use .update() but it will add only keys in the file 
 # or we can diretly assign new value to data object to add a new user in dict(it will add user as a whole entry)
 #we can use .append() in case of list
-
+#Why did you use default_data.copy() instead of just assigning default_data directly?
+#default_data.copy() craetes a shallow copy so that changes goes into data instead of defaultdata
 ##.................the improvements we can do..................................
 #take a number from user and run functions on the base of that
 #instead of hardcoding we can remove a user dynamically by looping over users and taking input form user by finding id
 
-
+#weakness according to chatgpt
+# Your data structure uses a dictionary of users but stores users under arbitrary keys like user3, user7 instead of using id as the main unique key. This makes searching, updating, and deleting less reliable and forces looping instead of direct access.

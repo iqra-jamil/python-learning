@@ -24,7 +24,7 @@
     "user3": {
         "id": 2,
         "name": "sara",
-        "age": 88,
+        "age": 23,
         "student": true,
         "hobbies": [
             "cooking",

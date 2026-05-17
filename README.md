@@ -247,3 +247,24 @@ we read/write the binary files same as we read/write txt files but they are for 
 #### Note: before writing the the code we may dont have idea wht type of exception may occur in try block we can use "Exception as e" exception to know exact error bcz it can catch anytype of error then we can replace it with specific exception
 
 #### if you have nested dict and you are looping over dict_name then it will return keys so it will not loop over thier values so we need to use dict_name.values() to get thier values(inner dictionaries)
+
+### in case of broken json file JSONDecodeError exception will be raised
+
+### risk of using global variable
+
+- if we are using same variable in multiple functions and change its value in one function it can effect the other functions too
+- and it can make debugging difficult and hard to trace wher the modeofications were done
+
+# working with external data
+
+Working with external data means your program is using data that comes from outside the program itself.
+Instead of hardcoding everything inside variables, your program reads, writes, sends, or receives data from other sources.
+
+## Examples
+
+- Reading a .txt or .json file
+- Getting data from an API
+- Using a database
+- Uploading images or files
+- Taking input from users
+- Reading CSV or Excel files
