@@ -1,7 +1,9 @@
+# File handling & try-except notes
+
 python has saveral functions for
 creating,reading,update,deleting the files
 
-# File Handling
+## File Handling
 
 - the key function we use while working with files is open() function
 
