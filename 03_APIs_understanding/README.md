@@ -243,11 +243,11 @@ starts with->5XX-> server mistake
 
 ### MOST COMMON CODES
 
-![alt text](image-1.png)
+![alt text](status_codes.png)
 
 # why we use API keys in APIs URLs??
 
-- the secret code we send in the header with our requset to prove that we are authorized users of that API
+- the secret code we send in the header or in URL with our requset to prove that we are authorized users of that API
 - to track who or wich developer is making request
 - to track uasge(to track how many times API calls were made)
 - to limit usage,charge money if needed
@@ -326,12 +326,28 @@ all the tasks run together-second task does not wait for another task to finish
 # difference between path paramter & query paramter
 
 - ID or value we put inside the URL path to target specific resource
-  like /post/5 post number 5 is called path paramter (required)
-- the extra filters we put at the end of URl with ? to tell server what sepcific data we want is called query parametr (optional)
+  like /post/5 post number 5 is called path paramter (usually required)
+- the extra filters we put at the end of URl with ? to tell server what sepcific data we want is called query parametr (usually optional)
   like /posts?userId=1 we want posts of user whose userId is 1
 - path parametr is targeting the singgle record by ID
 - query paarmetr is searching and applying filtering on multiple records
+- if we need to use multiple query parametrs we can use ? before frst query parametr and we can use & for the other query paramters in a single URL
 
 # extracting data from JSON response
 
 Extracting data from JSON response means picking out only the specific values we need from the JSON response like getting only `temperature` and `city` from a big weather JSON response and ignoring everything else
+
+# params in a URL
+
+appid={API_key}
+q={city_name}
+units=metric #returns celcius
+can read more in documentation
+
+### NOTE: we can use data.keys() to get the keys and API's json response contain
+
+# diffrence between response.status_code and cod
+
+- response.status_code comes from the HTTP response headers — it is the status code from the server itself.
+- cod is inside the JSON response body — it is the status code that OpenWeatherMap sends as part of their own data.
+  Both can show 200 or 404 but they are in different places!You said: both are coming from server
