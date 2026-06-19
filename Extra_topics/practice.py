@@ -15,9 +15,9 @@ def say_hello():
 say_hello()
 
 
-print( "Context managers")
-with open("demo.txt","r") as f:
-    data=f.read()
+# print( "Context managers")
+# with open("demo.txt","r") as f:
+#     data=f.read()
 
 # # # print( "map(),filter(),zip()")
 string_list=["1","2","3"]
@@ -94,8 +94,8 @@ print(final_res)
 
 
 
-# 2:57 AM
-# Exercise:Use zip() to combine these two lists, then use filter() to keep only pairs where both numbers are even, then use map() to add each pair together.
+# # 2:57 AM
+# # Exercise:Use zip() to combine these two lists, then use filter() to keep only pairs where both numbers are even, then use map() to add each pair together.
 
 a = [2, 3, 4, 7, 8]
 b = [6, 5, 2, 4, 10]
@@ -113,7 +113,7 @@ def add_pairs(pair):
 map_res=list(map(add_pairs,filter_res))
 print(map_res)
 
-#exercise: Use zip() to combine these two lists, then use filter() to keep only pairs where the sum of both numbers is greater than 15, then use map() to return the difference (larger minus smaller) of each kept pair.
+# #exercise: Use zip() to combine these two lists, then use filter() to keep only pairs where the sum of both numbers is greater than 15, then use map() to return the difference (larger minus smaller) of each kept pair.
 
 a = [3, 10, 8, 14, 6]
 b = [12, 7, 9, 5, 11]
@@ -135,3 +135,33 @@ def map_filteredlist(pair):
     
 map_res=list(map(map_filteredlist,filter_res))
 print(map_res)
+
+
+
+#...............................Dunder methods......................................
+
+class Book():
+    def __init__(self,title,pages):
+        self.title=title
+        self.pages=pages
+    def __str__(self):
+        return f"{self.title}:{self.pages}"
+    def __len__(self):
+       return self.pages
+obj=Book("python learning",200)
+print(obj)
+print(len(obj))
+
+# Create a `Car` class with `brand` and `speed` attributes, implement `__str__` to print car details and `__len__` to return the speed.
+
+class Car ():
+    def __init__(self,brand,speed):
+        self.brand=brand
+        self.speed=speed
+    def __str__(self):
+        return f"{self.brand} with speed {self.speed}"
+    def __len__(self):
+        return self.speed
+carObj=Car("Toyota",135)
+print(carObj)
+print(len(carObj))
