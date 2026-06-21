@@ -152,6 +152,7 @@ obj=Book("python learning",200)
 print(obj)
 print(len(obj))
 
+
 # Create a `Car` class with `brand` and `speed` attributes, implement `__str__` to print car details and `__len__` to return the speed.
 
 class Car ():
