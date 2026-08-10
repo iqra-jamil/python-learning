@@ -130,7 +130,7 @@ a pipeline is simply a step by step process that takes something from the beginn
 - ## define project objectives 
     - specify Business Problems
     - Company requiremnts
-- ## DAta collection 
+- ## Data collection 
 we can have two types of data
 ### Primary data
 The data you colect yourself for a specific purpose (collected by user)
@@ -139,7 +139,7 @@ the data collected by someone else and reused by you (aisa data statistical proc
 - ## DAta preprocessing
  - jo data hum ny data collection phase main collect kia hota h wo raw data hota h yani us main inconsistency hoti hai, aor wo proper format main nai hota kuch values missing ho skti hain etc etc is liy hum data collect krny k baad data preprocessing krty hain
  - we can use python libraries like numpy,pandas,and scikit learn libraries for data preprocessing 
- we have three following steps in data preprocessing 
+ we have three main following steps in data preprocessing 
      1. data cleaning
        - filling missing data
        - Smoothing noisy data : noisy data means an unusall values or irrelevent data like temprature of a person recorded as 500 degree C
@@ -176,6 +176,10 @@ the data collected by someone else and reused by you (aisa data statistical proc
 
 - ## model building
 after selcting algo we use that algo and split our data in to test and train to train the model and then test it and then make predictions and we will keep reapeating the process till the model learn better pattrens 
+# Dataset → Split data → Train model → Make predictions → Check accuracy.
 - ## model deployment
 integrate ML model into existing production environment 
 means we deploy the model into production env
+
+# Note : Data cleaning, data transformation, and dimensionality reduction are the main categories, but preprocessing can also include other steps depending on the dataset.
+# Note data sppliting b data transformation main aati h 
