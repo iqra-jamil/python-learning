@@ -72,3 +72,4 @@ we can also use loop to loop through an iterable objects (strings too)
 ### syntax :hasattr(obj, 'name') # returns True or False
 
 ### An object is only called an iterator if it has both **iter**() and **next**() methods defined inside it. That is called the iterator protocol.
+## A generator itself just knows how to "pause and resume" — it doesn't know how to produce a sequence of values on its own. The for loop is what walks through your range of numbers one by one. Each time the loop hits yield, it pauses and hands out that one value. Without the loop, you'd only get a single value, not a sequence.

@@ -14,3 +14,4 @@ for i in range(1000,3001):
      val.append(i)
 
 print(val)
+print(','.join(str(x) for x in val))
