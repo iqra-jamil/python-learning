@@ -105,7 +105,7 @@ to create a file use open() with one of the following parameter
 python try except handles errors in the code ,it controls when something goes wrong or works fine
 
 - try: test the block of code that might cause error(error aaskta h ya nai aaskta)
-- catch: runs if error happens (its not only to print the error msg we can handle wht should be happen in case of eror)
+- except: runs if error happens (its not only to print the error msg we can handle wht should be happen in case of eror)
 - else:runs if no error happens
 - finally:runs in both cases if the error happens or not
 

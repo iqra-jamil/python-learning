@@ -231,9 +231,14 @@ I send DELETE request
 status codes wo 3 digit numbers hoty hain jo server humy hamari request k baad jo response bhjta h us response k sath display krta h humy yeh btany k liy k hamri request sucessfull thi ya failed
 like
 
-- 200 ka matlab h sucess
-- 404 page not found
-- 500 means server has a problem
+- 200 means the request succeeded.
+- 201 request succeded and new resource created 
+- 400 - your request is bad
+- 404 page not found /resource not found
+- 500 means server has a problem (server side err)
+- 401 means “Unauthorized”, the request lacks valid authentication credentials.( you are not properly authenticated)
+- 403 - you are authenticated or identified but you cant acess it
+
 
 ### RULE
 
@@ -323,15 +328,22 @@ all the tasks run together-second task does not wait for another task to finish
 - like email,name,image,age etc
 - server and client both can send payload data to each other (its oneway)
 
-# difference between path paramter & query paramter
+# difference between path paramter & query parameters
+## query parameter (filter)
+- the extra information we give after ? in a URL 
+- to filter or cutomize (or sorting )the request 
+- for example server stores data of users and we want to request only the users of age 20
+- so we will use query parametr to filter only the users of age 20 /users?age=20
+- Could return many students who are of age 20.
+- usually optional
 
-- ID or value we put inside the URL path to target specific resource
-  like /post/5 post number 5 is called path paramter (usually required)
-- the extra filters we put at the end of URl with ? to tell server what sepcific data we want is called query parametr (usually optional)
-  like /posts?userId=1 we want posts of user whose userId is 1
-- path parametr is targeting the singgle record by ID
-- query paarmetr is searching and applying filtering on multiple records
-- if we need to use multiple query parametrs we can use ? before frst query parametr and we can use & for the other query paramters in a single URL
+## path parameter (indentify)
+- the value we put directly in the URL, to identify the specific resource
+- for example /users/20 find the users having ID =20
+- One specific user, ID 25.
+- or for exapmple in posts we want post 5 then we wil use path param to identify that post 5
+- required
+
 
 # extracting data from JSON response
 
@@ -351,3 +363,90 @@ can read more in documentation
 - response.status_code comes from the HTTP response headers — it is the status code from the server itself.
 - cod is inside the JSON response body — it is the status code that OpenWeatherMap sends as part of their own data.
   Both can show 200 or 404 but they are in different places!You said: both are coming from server
+
+
+# API  authentication :
+- when our code talks to an external source liek (open AI weather api,payment processor) the service want to know  who is talking
+- otherwise anyone could use Api for free and misuse it 
+- thats called api authentication
+Common authentication methods include:
+     -  API keys - The most common form is an API key: a long random string tied to your account. You send it with every request, usually in the headers:
+     -  Bearer tokens - a Bearer token is one way the app proves it has authorization.
+       On first login, Google sends the bearer token to the app once; after that, the app reuses that same token on every future request instead of asking you to log in again.
+     - OAuth -  safe process of logging in (e.g using google account) in to anotehr app(e.g facebook) that hands our app a bearer taken instaed of google's acount passwrd
+- when our code (the client) sends a request to a server's API to get or send data, that's when the API key gets attached, so the server can verify who's asking before responding.
+- service chks the key aggainst its record,conform that its valid and then process the request
+- the key idea is use APi key, bearer tokens or OAuth whatever but frst prove who you are 
+# .env :
+- A palin text file that  store secret password, Api keys, bearer token,URLs 
+- we put it in .gitignore so that we nevr push it on github or make it public
+for example in .env file we have:
+API_KEY=sk-abc123
+# python .dotenv:
+- a python package that reads our .env and loads its values in our program
+- its a bridge that lets our code actually use what's sitting in .env
+from dotenv import load_dotenv
+import os
+load_dotenv()
+api_key=os.genenv("API_KEY")
+
+# environment variables
+A variable in .env becomes an environment variable only after load_dotenv() loads it before that, it's just plain text in a file.
+
+
+# request body
+
+the data client sent to the server during post,patch,put HTTP requests is request body
+
+request body:
+
+{
+  "name":"iqra"
+  "age":24
+}
+
+the data inside request body is the payload data
+
+
+
+# interview questions:
+- What is the difference between a GET request and a POST request?
+- What is the difference between query parameters and request body?
+- What are HTTP headers, and why do we use them?
+ “HTTP headers contain additional information about an HTTP request or response.
+ - What is the difference between response.json(), response.text, and response.content in Python requests?
+ response.json() can parse the data not only in dict or python list bit also in number,boolen or None or string depends on json
+- What is the purpose of a .env file, and what does python-dotenv do?
+- What is the difference between PUT and PATCH?
+- What happens when you call response.json() in requests?
+- What is the difference between authentication and authorization?
+   - Authentication means verifying who you are
+   - Authorization means checking what you are allowed to access or do after you are authenticated.
+- What is the difference between an API key and a Bearer token?
+    - An API key is a credential used to identify or authenticate an application. A Bearer token is a token sent with a request, usually in the Authorization header, to prove that the requester has access.
+- What is the purpose of try and except when making an API request with requests?
+   - the errors w ecan face while fetching data from API connection err,timeout err
+
+- What is an API endpoint?
+    -  specific URL where an API receives requests and sends responses
+- What is the difference between an API endpoint and an API URL?
+- What does response.raise_for_status() do in Python requests?
+  - response.raise_for_status() checks the HTTP response status code. If the request failed with a 4xx or 5xx status code, it raises an exception. If the response was successful, it does nothing.
+
+- Why might you use response.raise_for_status() inside a try/except block?
+- What is the difference between a 200 and a 201 status code?
+- What happens if you make a request to an API and the server takes too long to respond?
+   will  raise timeout exception
+- Why would you use timeout in an API request?
+- If an API requires an API key, where would you put that key in a request? 
+  - in query param or in header
+- What is the difference between storing an API key in .env and sending an API key in a request?
+- If you make a GET request and receive a 404 response, what would you check first?
+    - The URL and endpoint are correct.
+    - The resource ID or path is correct.
+    - The query parameters are correct if they affect the requested resource.-
+- Suppose your API request returns 200, but response.json() gives you an error. What could be the reason?
+  - The likely reason is that a 200 status code only means the HTTP request succeeded. It does not guarantee that the response body contains valid JSON.
+- What is the difference between response.status_code and response.raise_for_status()?
+   - response.status_code gives you the actual HTTP status code, such as 200, 404, or 500.
+   - response.raise_for_status() checks that status code and raises an exception if it is a 4xx or 5xx error.

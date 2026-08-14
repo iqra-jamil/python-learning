@@ -13,9 +13,9 @@ if(data['cod']=='404'and data['message']=='city not found'):
     print("city not found")
 elif(data['cod']==200):
  print("City",city_name)
- #print("MY_DATA",data)
- #print('msg',data['message'])
- #print("MY_DATA_keys",data.keys())
+ print("MY_DATA",data)
+ print('msg',data['message'])
+ print("MY_DATA_keys",data.keys())
  temp=data['main']['temp']
  humadity=data['main']['humidity']
  print(f"Temprature:{temp}\u00b0C")
@@ -31,7 +31,7 @@ else:
 
 
 
-##POST request
+# #POST request
 # payload={'name':'iqra','student':True}
 # API_URL=f"https://httpbin.org/post"
 # response=requests.post(API_URL,json=payload)

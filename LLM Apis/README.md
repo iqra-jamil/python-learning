@@ -1,0 +1,13 @@
+LLM APIs:
+- • OpenAI API
+- • Gemini API
+- • Groq API
+- • model selection
+- • system messages
+- • user messages
+- • conversation messages
+- • temperature
+- • max tokens
+- • response handling
+- • streaming responses
+- • basic token usage
