@@ -388,7 +388,7 @@ API_KEY=sk-abc123
 from dotenv import load_dotenv
 import os
 load_dotenv()
-api_key=os.genenv("API_KEY")
+api_key=os.getenv("API_KEY")
 
 # environment variables
 A variable in .env becomes an environment variable only after load_dotenv() loads it before that, it's just plain text in a file.

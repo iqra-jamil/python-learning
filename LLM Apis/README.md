@@ -122,3 +122,6 @@ LLM gives response--> our app rcve it --> app display LLM's response to the user
 # - • basic token usage
 - it means understanding how many total tokkens our API request uses.
 - Total token usage = input tokens(tokens in prompts + other input msgs) + output tokens(tokens in LLM's response)
+
+## Api endpoint :
+is the adress or URL to which we send a request to acess a particular function of an api
