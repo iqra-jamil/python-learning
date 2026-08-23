@@ -41,10 +41,26 @@ chat completion api takes a list of roles role-labeled messages to the model and
 {"role": "user", "content": "What's my name?"}
 ]
 
-
+### NOTE 1  : completion api and chat completion api concepts exist in any api like gemini and groq just use different methods/ functions names
 
 # Responses apis
 
 - Respones api is the newest api end point by the open ai to replace both completion and chat completion api
 - it takes model and input (replacing completion api)
 - we can set role and content list inside input (replacing chat completion api )
+
+
+# ROLES: 
+- system or devloper
+- user
+- assistant
+
+# why we create Client object??
+- we create Client object because it holds api key and conection setting like base URL
+- so because of this on evry api call (client.chat.completions.create(), etc.) it uses same 
+authenticated connection instead of we passing our api key manualy evry single time 
+
+# client.chat.completions.create()
+ client.chat.completions.create() is exactly what triggers the actual API call (an HTTP request) to the /chat/completions endpoint over the internet.
+
+# NOTE 2 : we can acess other LLM's APIs using openai python library but gemini and groq have their own libraries (other LLM's may also have)

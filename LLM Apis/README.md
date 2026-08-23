@@ -66,6 +66,9 @@ It's like a student who didn't study but is confident in exams — they'll write
 - setting that controls how random or how creative answers of an LLM are
     - Low temperature (like 0 or 0.2): safe,predictable or focused (good for maths ,codding or facts )
     - High temperature (like 0.8 or 1): creative ,or sometimes more suprising answers (good for brainstorming or stories)
+    - low temprature give more consistent responses
+    - higher temrature dosnt mean the model is smartter 
+    - we can use higher temprature for creative wrighting ,but it give unconsistnt responses
 - ### Simple example: 
 Low temperature is like a careful student giving the "textbook" answer every time. High temperature is like a creative writer who might come up with something unexpected each time you ask.
 
@@ -111,6 +114,8 @@ a setting that control how random or how creative answers of LLM are (discussed 
 # - • max tokens
 - max tokens means maximum tokens an LLM is allowed to generate in its response
 - it control single response not total conversation
+- If the model stopped naturally at 1,268, it did not necessarily hit the maximum.
+- Setting a max token limit controls how long an AI model's response can be
 # - • response handling
 - response handling is what your app does with the LLM's response after it(app) recieve it(LLm's response)
 - example:
@@ -125,3 +130,4 @@ LLM gives response--> our app rcve it --> app display LLM's response to the user
 
 ## Api endpoint :
 is the adress or URL to which we send a request to acess a particular function of an api
+
