@@ -1,6 +1,7 @@
 # Completion API vs Chat completion API
 completion api takes raw text just a plain txt and continue that txt 
 chat completion api takes a list of roles role-labeled messages to the model and it generate the nxt assistant reply based on that whole conversation histry
+both apis are stateless ,but in chat completion api our application store the chat history not api itself
 ## Completion API
 # what is completion api :
 - an API where we send a text(prompt) to the model 
@@ -22,7 +23,7 @@ chat completion api takes a list of roles role-labeled messages to the model and
    - user = what the person is asking
    - assistant = the model's own previous replies
 
-- unlike completion api, here the model is NOT stateless (within one session)
+- unlike completion api,  (within one session)
    - it can "remember" the conversation because YOU send the full message history every time
        - This line means: the model itself doesn't actually remember anything — you (or the app/code) are the one resending the entire past conversation (all previous messages) along with your new message, every single time you make a request.
 

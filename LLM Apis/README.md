@@ -1,6 +1,6 @@
 
 # generative AI :
-gen AI is an AI that can generate new content
+gen AI is an AI systems that can generate new content based on learned pattrens
 - txt ,images,vidoes,audios,code generators
 # what is LLM 
 - large language model
@@ -43,7 +43,7 @@ gen AI is an AI that can generate new content
 - Tokens: are the smaller chunks (words,sub-words or punctuations) that an LLM generate by splitting taht txt into interally to process and generate that language 
 # 4. context window,
 - context window is basically LLM's short trem memory
-- context window means kitna txt aik model aik dfa mian process kar skta h ya daik skta 
+- context window means kitna max txt aik model aik dfa mian process kar skta h ya daik skta(including user's input and model's response(outputs)) 
 - us txt ko word main nai blky tokens main measure kia jata h
 - agr conversation bhot lambi chli jaati h aor aik specific limit hit ho jati h to model earlist conversation ko bhulna shuru kr dy ga 
 - like normal real life conversation main hota h k humy convo ke start ke baaten yaad nai rehti aor last mint baaten hamri memory main reh jati hain
@@ -53,7 +53,7 @@ gen AI is an AI that can generate new content
 Hallucination is when a model generate information confidently that sounds correct ,but thats actually wrong
 - ### Why:
 - model ko facts ka nai pta hota 
-- still wo nxt word ko un pattrens ke base par predict krta h jo us ny leran kiy hoty hain
+- still wo nxt word ko un pattrens ke base par predict krta h jo us ny learn kiy hoty hain
 - so agr model ko kisi cheez ka nia pta to "i dont know" kheny k bajay wo aik aisa response/answer generate krta h jo bazahir sahi lagta h lkn wo sahi hota  nai h 
 - ### Simple analogy: 
 It's like a student who didn't study but is confident in exams — they'll write a fluent, well-structured answer... that's completely made up.
@@ -116,6 +116,7 @@ a setting that control how random or how creative answers of LLM are (discussed 
 - it control single response not total conversation
 - If the model stopped naturally at 1,268, it did not necessarily hit the maximum.
 - Setting a max token limit controls how long an AI model's response can be
+-max tokens is a parameter that controls how many tokens the model is allowed to generate in its output.
 # - • response handling
 - response handling is what your app does with the LLM's response after it(app) recieve it(LLm's response)
 - example:

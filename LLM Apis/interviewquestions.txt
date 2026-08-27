@@ -1,0 +1,100 @@
+1. What is Generative AI?
+
+2. What is an LLM?
+
+3. What is the difference between Generative AI and an LLM?
+
+4. If LLMs are mainly language models, how can modern AI systems work with images, audio, and video?
+
+ Modren AI systems use multimodal modals and specialized models to generate and process images,audio,videos etc ,multimodal models can understand images,audios,videos but we use specialized models to generate them
+
+5. What is next token prediction, and how does an LLM generate a response?
+In an interview, make one point explicit: it predicts one token at a time, adds that token to the context, then predicts the next token repeatedly until it stops.
+
+6. What is a token, and how is it different from text?
+
+7. What happens during LLM training?
+LLM training is the process where a model learns language patterns from a large amount of data. It learns pattrens  by predicting the next token and adjusting itself when its prediction is wrong. After training, it uses what it learned to generate responses.
+
+8. What is a context window?
+
+9. What happens when a conversation exceeds the model’s context window?
+When the conversation exceeds the context window, the model can no longer see all of the previous conversation. Usually, the oldest parts are removed or truncated, so the model may lose access to earlier messages
+
+10. What is hallucination in LLMs, and why does it happen?
+its when an LLM generate wrong info that sounds correct ,it may happen bcz aik model pattrens learn kar k un pattrens ke base par resposnes generate krta h instaed of chking every statemnt against facts
+
+11. What is a knowledge cutoff?
+
+12. What is temperature, and how does changing it affect model output?
+
+13. What is the difference between the Completion API and Chat Completion API?
+
+14. Why was the Chat Completion API introduced when a Completion API already existed?
+
+15. How does a Completion API handle conversation history?
+
+16. Does Chat Completion API actually give the model memory?
+
+17. If Chat Completion API does not have real memory, how does a chatbot maintain a conversation?
+
+chatbot maintain a conversation by storing previous messages(user'promot, system's msgs,model's responses) in applicaion and jab new api request model k pass jati h to us k sath application wo conversation history jo us main stored hoti h wo bhjti h ,roles he model ko undersatdn krny main hlp karty hain k kis ny kia kaha
+18. What are system, user, and assistant roles?
+
+19. What is the purpose of the assistant role in a Chat Completion request?
+
+20. What is the Responses API, and how is it related to Completion and Chat Completion APIs?
+Responses API is OpenAI’s newer API designed to replace the older Completion and Chat Completion APIs. It provides a unified way to send simple text input or structured role based input to a model.
+
+21. Why would you use the Responses API instead of the older APIs?
+
+22. What is an API endpoint?
+
+23. What happens technically when you call client.chat.completions.create()?
+when we call it the python's open ai library send HTTP request to the chat completion api's endpoint. the request contains model and messages. api will process the request and send the model’s response back to the application (client)
+
+24. Why do we create a Client object when using an API?
+Client object holds the configuration needed to make API requests, such as authentication and the base URL.
+
+25. Why should API keys be stored in environment variables instead of directly in code?
+
+26. What is model selection, and what factors would you consider when choosing an LLM for a project?
+Model selection means choosing the most suitable model for our project. I would consider factors such as response quality, cost,privacy,rate limits speed, context window, capabilities, and the requirements of the application
+27. What is the difference between a larger model and a smaller model in terms of cost, speed, and capability?
+Larger models are generally more capable but more expensive and slower. Smaller models are generally cheaper and faster, but may have lower capability.
+
+28. What is the difference between OpenAI, Google Gemini, and Groq?
+OpenAI and Google are companies that develop their own AI models and provide APIs to access them. Gemini is Google’s model family. Groq is primarily an inference infrastructure and API provider that can run models developed by other companies or organizations
+
+29. Does Groq own all the models that you can access through its API?
+
+30. What is inference, and what role does infrastructure play in running an AI model?
+
+31. Can you use the OpenAI Python library to access Gemini or other providers? If yes, how?
+
+32. What is the difference between using a provider’s official Python SDK and using the OpenAI-compatible API interface?
+I haven't worked much with official SDKs from other providers yet. My understanding is that an official SDK is built specifically for that provider, while an OpenAI compatible API lets us use the OpenAI library with another provider by changing the API key and base URL.
+
+33. What is streaming, and how is a streaming response different from a normal response?
+
+34. Why can't you directly use response.choices[0].message.content when you receive a streaming response?
+We can't use response.choices[0].message.content directly because a streaming response arrives as separate chunks. Each chunk contains incremental content in delta.content, so we have to process the chunks as they arrive.
+
+35. What does response.choices[0].delta.content represent during streaming?
+delta.content represents the new piece of text contained in each streaming chunk.
+36. What is max tokens, and does it limit the entire conversation or a single generated response?
+
+37. What is token usage, and how do input tokens and output tokens contribute to total usage?
+
+Token usage means the total number of tokens used in an API request. Input tokens are the tokens we send to the model, such as the user prompt, system message, and conversation history. Output tokens are the tokens generated by the model. So total token usage is input tokens plus output tokens.
+
+38. What is the purpose of response handling in an LLM application?
+Response handling means processing the response we receive from the LLM in our application. For example, we can extract the generated text, display it to the user, save it, or use it for another operation.
+39. In your code, why did you use AuthenticationError, BadRequestError, and APIError separately?
+I used AuthenticationError to handle invalid or unauthorized API keys. I used BadRequestError is used when we send an invalid or incorrectly formatted request to the API. For example, if you send an invalid model name or an unsupported parameter, the API can return a BadRequestError.
+I used APIError as a broader exception to catch other API related errors.
+
+40. If your API request fails with a specific error, how would you determine whether the problem is the API key, model name, request parameters, quota, or the API provider itself?
+
+
+I would first check the exception type, status code, and error message. An AuthenticationError suggests an API key or authorization problem. A BadRequestError can indicate an invalid model or request parameter. A rate limit or quota error indicates a usage or billing limit. For other API errors, I would check the provider’s error details and documentation.
