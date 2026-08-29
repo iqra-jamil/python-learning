@@ -98,3 +98,23 @@ I used APIError as a broader exception to catch other API related errors.
 
 
 I would first check the exception type, status code, and error message. An AuthenticationError suggests an API key or authorization problem. A BadRequestError can indicate an invalid model or request parameter. A rate limit or quota error indicates a usage or billing limit. For other API errors, I would check the provider’s error details and documentation.
+
+- # what is neural network?
+A neural network is a type of artificial intelligence inspired by human brain
+- # transformer architecture
+is a type of AI neural network design that process data by looking at entore sequence all at once and then pay attention to only whats imporatnt to understand how words or parts are 
+realted to each other
+- # Rule-based systems
+A human manually writes the rules and the computer just follows them.
+# Mock interview questions:
+1- What is a Large Language Model and how does it differ from traditional rule‑based language systems?
+- LLM or large language model is a neural network ,trained on a massive amount of text to understand ,summarize and generate human language 
+- an LLM learns pattrens from the text it was trained on and then understand and generate the text based in pattrens it learns
+- most modren LLMs use transformer architecture and self attention
+- unlike traditional rule based systems, predefined human written rules LLms learns pattrens from data and generate responses based on probability and chances
+- This allows LLMs to handle a much wider range of language.
+
+2- what is tokenization and......
+- Tokenization is the process of breaking text into smaller units called tokens so the model can process them as numbers. A tokenizer can use words, characters, or subwords. Modern LLMs commonly use subword tokenization, such as BPE, because it can handle common words efficiently while also handling unfamiliar words by breaking them into smaller pieces. The tokenizer converts these tokens into token IDs, which the model then processes. The model uses these tokens to predict the next token.
+3- Describe the difference between fine‑tuning an LLM and using prompt engineering to adapt it to a new task.
+Fine tuning means training an already trained LLM on task specific data, which updates its model parameters or weights so it becomes better at that specific task. Prompt engineering does not change the model weights. Instead, we design the prompt with clear instructions, context, examples, or constraints to guide the existing model. Prompt engineering is usually cheaper and more flexible, while fine tuning requires task specific data and more computation. For example, I might use prompt engineering to make an LLM summarize customer reviews, but fine tune it if I need consistent behavior for a specific task across many requests.
