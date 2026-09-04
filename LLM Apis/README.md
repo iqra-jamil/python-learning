@@ -132,3 +132,18 @@ LLM gives response--> our app rcve it --> app display LLM's response to the user
 ## Api endpoint :
 is the adress or URL to which we send a request to acess a particular function of an api
 
+# APIError Exception class can handle all the HTTP level errors (three digit response code returned by webserver ) 
+# but every HTTP level error hae specific class to handle an exception like :
+- 400 BadRequestError
+- 401 AuthenticationError
+- 403 PermissionDeniedError
+- 404 NotFoundError
+- 409 ConflictError
+- 422 UnprocessableEntityError
+- 429 RateLimitError
+- 500+ InternalServerError
+
+so as API Error can handle all the HTTP level errors the whhy we still have specific classes??
+because when we have to decide what should be specific recovery logic for each exception so at that time we use specific classes
+
+# we can also have api connection errors like timeout or api didnt connected to server

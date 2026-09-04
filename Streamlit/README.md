@@ -31,3 +31,11 @@ we use to insert elments in to layout containers like sidebar,tabs,col etc
 # Data elements
 we can use stream lit with pandas or numpy for data handling
 # explore more at : https://docs.streamlit.io/develop/api-reference/data
+
+
+# why we use session_state in streamlit ?
+- streamlit rerun entire script from top to bottom on every interaction (like button clik ,type in input field etc)
+- so without session_state our variables will reset on rerun and we will lose our previous data
+- it store data temporarily till the browser tab is open ,if we refresh or close the tab it will be gone 
+
+- we can acess,update or dlt value of the varible created using session state using dot notation and dictionary notation["x"]
