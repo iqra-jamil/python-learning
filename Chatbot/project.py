@@ -19,7 +19,7 @@ if "messages_list" not in st.session_state:
     ]
 if "all_chats" not in st.session_state:
      st.session_state.all_chats=[]
-st.title("Chatbot")
+st.title("Iqra Ai")
 user_prompt=st.chat_input("Ask anything")
 # try Except
 try:
