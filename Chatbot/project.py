@@ -7,19 +7,21 @@ import os
 load_dotenv()
 # side_title=''
 
-client=OpenAI(
-    api_key=os.getenv('GROQ_API_KEY'),
-    base_url="https://api.groq.com/openai/v1"
-)
-
-
+st.title("Iqra Ai")
+# State Variables to store each chat and all chats
 if "messages_list" not in st.session_state:
     st.session_state.messages_list=[
       {"role":"system","content":"you are a helpful AI assistant"}
     ]
 if "all_chats" not in st.session_state:
      st.session_state.all_chats=[]
-st.title("Iqra Ai")
+
+client=OpenAI(
+    api_key=os.getenv('GROQ_API_KEY'),
+    base_url="https://api.groq.com/openai/v1"
+)
+
+
 user_prompt=st.chat_input("Ask anything")
 # try Except
 try:
@@ -38,17 +40,16 @@ try:
 
 
 except openai.BadRequestError as e:
-  print(f"BadRequestError  : {e}")
+  st.write(f"BadRequestError  : {e}")
 except openai.APIConnectionError as e:
-  print(f"APIConnectionErrorr  : {e}")
+  st.write(f"APIConnectionErrorr  : {e}")
 
 # Side bar
 with st.sidebar:
    st.header("LLM Chatbot")
    st.write("You AI Assistant")
    if st.button("New Chat",icon="💬" ,width="stretch" ):
-      
-        st.session_state.messages_list=[
+      st.session_state.messages_list=[
              {"role":"system","content":"you are a helpful AI assistant"}
            ]
       
@@ -74,12 +75,11 @@ with st.sidebar:
    for index,chat in enumerate(st.session_state.all_chats):
      chat_index=index
      for c in chat:
-       
-       if c["role"]=='user':
-        splited_txt=side_title=c['content'].split()
+      if c["role"]=='user':
+        splited_txt=c['content'].split()
         joined_txt=' '.join(splited_txt[:3])
         if st.button(joined_txt+"....",width="stretch"):
-            selected_chat=st.session_state.messages_list=st.session_state.all_chats[index]
+             st.session_state.messages_list=st.session_state.all_chats[index]
         break
 # rendring chat on UI
 for msg_list in  st.session_state.messages_list:

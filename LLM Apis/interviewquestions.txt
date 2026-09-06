@@ -116,5 +116,12 @@ A human manually writes the rules and the computer just follows them.
 
 2- what is tokenization and......
 - Tokenization is the process of breaking text into smaller units called tokens so the model can process them as numbers. A tokenizer can use words, characters, or subwords. Modern LLMs commonly use subword tokenization, such as BPE, because it can handle common words efficiently while also handling unfamiliar words by breaking them into smaller pieces. The tokenizer converts these tokens into token IDs, which the model then processes. The model uses these tokens to predict the next token.
-3- Describe the difference between fine‑tuning an LLM and using prompt engineering to adapt it to a new task.
-Fine tuning means training an already trained LLM on task specific data, which updates its model parameters or weights so it becomes better at that specific task. Prompt engineering does not change the model weights. Instead, we design the prompt with clear instructions, context, examples, or constraints to guide the existing model. Prompt engineering is usually cheaper and more flexible, while fine tuning requires task specific data and more computation. For example, I might use prompt engineering to make an LLM summarize customer reviews, but fine tune it if I need consistent behavior for a specific task across many requests.
+.3- Describe the difference between fine‑tuning an LLM and using prompt engineering to adapt it to a new task.
+Fine tuning means training an already trained LLM on task specific data, which updates its model parameters or weights so it becomes better at that specific task. Prompt engineering does not change the model weights. Instead, we design the prompt with clear instructions, context, examples, or constraints to guide the existing model. Prompt engineering is usually cheaper and more flexible, while fine tuning requires task specific data and more computation. For example, I might use prompt engineering to make an LLM summarize customer reviews, but fine tune it if I need consistent behavior for a specific task across many requests
+
+Open ai client communicate with its API by sending an HTTP request to its endpoint
+# Explain what the OpenAI client
+openAI client is a python client which provide us methods(Like base url and key) to communicate with APi
+
+# why we use base url ?
+to tell the client to send request to which API server or provider
