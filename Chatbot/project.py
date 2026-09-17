@@ -7,7 +7,7 @@ import os
 load_dotenv()
 # side_title=''
 
-st.title("Iqra Ai")
+st.title("Outofscope Ai")
 # State Variables to store each chat and all chats
 if "messages_list" not in st.session_state:
     st.session_state.messages_list=[
