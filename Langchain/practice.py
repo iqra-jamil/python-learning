@@ -9,7 +9,6 @@ from dotenv import load_dotenv
 import os
 load_dotenv()
 
-
 template="tell me a {adjective} joke about {topic}"
 promt_temp=PromptTemplate.from_template(template)
 # final_res=promt_temp.format(adjective="dark",topic="programming")
