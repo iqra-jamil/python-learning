@@ -61,3 +61,65 @@ creating embedding means :
 - Vector space is just a mathemetics calculation we use to find similrity between vectors or we use to compare diffrent vectrs 
 - vector database is actula software we use to stoir vectors tand run vector space calculations for us
 
+
+# What is a Vector Database?
+- a normal db store txt,numeric values dates etc (like WHERE name = 'iqra' or WHERE age = 24 )
+- a vector db store vectors
+- and we search by meanings in vector dbs not by exact match
+- we frst convert user's query txt into vectors then we comapre its vectors with vectore we have stored in vector db
+- we find similarity between both by using cosine similarity
+
+
+# FAISS(pronounce as faise (like dice))
+- Facebook AI similarity search
+- its an open source library developed by meta we can use for fast similarity serach
+- and used for clustring high dimensional dense vectors
+- clustring - grouping similar vectors together based on theri meanimg
+- High dimension - vectors with thousands of numbers (like 1536 dimension) 
+- dimension here means length /size of vectors (how many numbers are stored inside a vector) not array dimension
+- dense - every number in the vector has a value not zero
+- we cant store meta data in it 
+- its a large scale ,fast libaray
+- FAISS can only search vectors efficiently  for storing and managing you have to handle that yourself with Python code or another tool.
+- we cant store vectors & metadata too
+- its developed by meta 
+# ChromaDB
+- its an opn source database designed to store,manage , and search vector embeddings for AI applications
+- developed by chroma , its beginer friendly , we can use it for Learning, small projects
+- we can store meta data in it 
+- it act as a memory layer of LLMs
+- we can use it for RAG systems
+# storing vectors
+we store vector embedding in dbs so that we can search vectors later
+# storing metadata
+- meta data is extra info of a vector
+- like orignal txt,date, author name 
+- along wioth vectors we also store metadata
+# similarity search
+- we give query ,it is coverted in to vectors
+- now we have quey vectors and vectors stored inside a db
+- query vectors will be compared with stored vectrs and vectrs with highest cosine similarty will be returned
+# top-k results
+- Instead of returning all results, return only top 3 or top 5 most similar ones.
+- n_results=3  # return top 3 most similar
+# metadata filtering
+- Narrow results by metadata before searching by vectors
+- where={"author": "iqra"}
+- now we can search by vectors only the documnts with author name iqra
+
+# Chromadb
+the basic flow is to:
+- create a client wihc connect our app to chroma db
+- create collection: create a container or acess  a conatiner to store data
+we can acess or fetch it from somewhre
+- collection.add() store metadats,ids,docs,embeddings inside it
+- collection.get() to retrive data from db
+- query() → perform similarity search and get relevant records, usually top-k results.
+- chroma db dont retrn cosine similarty it return distance 
+less distance= more similarty
+high cosine similarty= less similarty
+ - so in query we can give query txt or qury embeding vectrs
+ - if we alredy calls embedung model to convert qury txt in to vectrs we will use 
+ query_embeddings parameter if we didnt then we will use query_txt parameter 
+ - we use "where" parameter for filter by metadata
+ - query_embeddings expects a list of vectors
