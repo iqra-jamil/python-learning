@@ -123,3 +123,18 @@ high cosine similarty= less similarty
  query_embeddings parameter if we didnt then we will use query_txt parameter 
  - we use "where" parameter for filter by metadata
  - query_embeddings expects a list of vectors
+
+
+# questions to answer
+## What retrieval evaluation means.
+retrival evaluation means testing our RAG system by chianging chunks size ,top-k values, and sending relevent and irelevent queries to chk if the retrived information is right or not
+## Why does chunk size matter in RAG?
+if the chunk size is too long it may contain unecassry information but if the chunk size is too smal the chunk may get splitted and we may never get exact anser as if the anser of a specific query is in two seprate chunks and we are doing n_results=1 we may get only 1 chunk realted to thatt query 
+## Why does top-k matter in RAG?
+Top-k matters because it controls how many chunks are retrieved. If we retrieve too many, irrelevant information can be included. If we retrieve too few, important information can be missed.
+##  What hallucination means in RAG.
+Hallucination in RAG means when the retrieved information does not contain the answer, but the LLM still generates an answer instead of saying the information is not available.
+
+## Why can a working RAG application still give bad answers?
+
+A RAG application can work technically but still give bad answers if it retrieves irrelevant or incomplete information, uses the wrong chunk size or top-k, or if the LLM hallucinates when the answer is not in the document.
