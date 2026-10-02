@@ -82,3 +82,11 @@ yeh line file name ko update kr dy ge yani yeh line btay ge k file process ho ch
 - to handle this we need to track if emebding fail hoe h ya sucessfull
 - so now we will upadte file name only when the function is returning tRue else that line should be skipped 
 - ab jab name he upadte nai hoa ho ga or user query bhjy ga embeding wala function dubara run ho ga bcz processes_file != uploaded_file.name yeh condition ab true h 
+
+# Architecture Diagram
+![Architecture diagram](pdf_chat_architecture.png)
+
+# App  Screenshots
+![alt text](image.png)
+![alt text](image-1.png)
+![alt text](image-2.png)
