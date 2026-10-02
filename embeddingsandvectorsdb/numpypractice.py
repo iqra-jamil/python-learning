@@ -42,7 +42,7 @@ result=collection.get(include=["embeddings","metadatas","documents"])
 #result=collection.get(ids=["id1"])
 #print(result)
 
-query_res=collection.query(query_embeddings=[query_search],
+query_res=collection.query(query_embeddings=query_search,
                            n_results=2,
                            where={"author_name":"me_iqra"})
 print("query results :: ",query_res)

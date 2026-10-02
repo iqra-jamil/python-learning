@@ -1,2 +1,4 @@
 myfirstproject/
 .env
+
+__pycache__
