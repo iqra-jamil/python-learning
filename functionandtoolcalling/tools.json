@@ -1,0 +1,30 @@
+{
+    "tools_list": [
+        {
+            "type": "function",
+            "function": {
+                "name": "get_weather",
+                "description": "Use this tool to fetch current weather for a specified city of pakistan",
+                "parameters": {
+                    "type": "object",
+                    "properties": {
+                        "city_name": {
+                            "type": "string",
+                            "description": "City name, e.g. 'karachi','Lahore','islamabad'"
+                        }
+                    },
+                    "required": [
+                        "city_name"
+                    ]
+                }
+            }
+        },
+        {
+            "type": "function",
+            "function": {
+                "name": "get_date_time",
+                "description": "Use this tool to fetch current date or time"
+            }
+        }
+    ]
+}

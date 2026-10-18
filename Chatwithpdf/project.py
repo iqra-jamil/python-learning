@@ -1,6 +1,8 @@
 import streamlit as st
 import chromadb 
 from langchain_core.chat_history import InMemoryChatMessageHistory
+import uuid
+import os
 from dotenv import load_dotenv
 from functions import load_and_chunks
 from functions import extract_my_txt
@@ -8,8 +10,7 @@ from functions import embed_and_store
 from functions import retrieval_func
 from functions import ask_llm
 from functions import render_chat
-import uuid
-import os
+
 load_dotenv()
 st.title("Chat with pdf")
 # Normal variables
@@ -78,6 +79,7 @@ if user_query:
           query_result=retrieval_func(collection,user_query)
           if not query_result:
              st.stop()
+            # To show in the sidebar
           st.session_state['Retrieved_Chunks'] = ''
           st.session_state['my_pagelabels'] = []
 

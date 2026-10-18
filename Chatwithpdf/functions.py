@@ -13,8 +13,8 @@ def load_and_chunks(file_byte):
       with tempfile.NamedTemporaryFile(delete=False,suffix='.pdf') as temp_file:
         temp_file.write(file_byte)
         file_path=temp_file.name
-      loader=PyPDFLoader(file_path)
-      extracted_data=loader.load()
+      loader=PyPDFLoader(file_path) #creates loader
+      extracted_data=loader.load() #load the data ,extract data, and return documnt object for each page 
        # Chunks of data
       txt_splitter=RecursiveCharacterTextSplitter(
              chunk_size=10000,
@@ -34,7 +34,7 @@ def extract_my_txt(my_chunks):
       my_unique_ids.append(str(each_id))
     return my_metadata,extracted_txt,my_unique_ids
 #Calling embeding model to convert document's txt into vectors
-def embed_and_store(my_collection,metadat_a,da_ta, id_s,):
+def embed_and_store(my_collection,metadat_a,da_ta, id_s):
    try:
     document_embeddings=GoogleGenerativeAIEmbeddings(
     model="gemini-embedding-2-preview",
@@ -52,6 +52,7 @@ def embed_and_store(my_collection,metadat_a,da_ta, id_s,):
    )
 
     st.session_state['retrived_data']=my_collection.get(include=["embeddings","documents","metadatas"])
+    #st.write(st.session_state['retrived_data'])  # for debugging only
     return True
    except Exception as e:
       st.error(e)
