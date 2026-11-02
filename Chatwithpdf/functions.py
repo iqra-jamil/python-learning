@@ -6,9 +6,10 @@ from langchain.messages import HumanMessage,SystemMessage,AIMessage
 import tempfile
 import uuid
 import streamlit as st
-
+import sqlite3 as sq
 #Functions
 #load and extract txt from documnt
+
 def load_and_chunks(file_byte):
       with tempfile.NamedTemporaryFile(delete=False,suffix='.pdf') as temp_file:
         temp_file.write(file_byte)
@@ -80,13 +81,14 @@ def ask_llm(query_res,user_query):
        temperature=1.0,
       max_tokens=None
     )
-    system_msg=SystemMessage(content=f"You are a helpful AI assistant. Answer the user's query based only on the provided information: {query_res}. If the requested information is not available, respond with 'Information not provided.' Do not provide any information beyond the provided context.")
+    system_msg=SystemMessage(content=f"You are a helpful AI assistant. Answer the user's query based only on the provided information: {query_res}. If the answer is not in the provided information, say in your own words that it is not mentioned in the document. Do not provide any information beyond the provided context.")
     #msg history
     st.session_state["msg_history"].add_message(
        HumanMessage(content=user_query)
     )
     response=model.invoke([system_msg]+st.session_state["msg_history"].messages)
     st.session_state["msg_history"].add_message(response)
+    return response.content
  except Exception as e:
     st.error(e)
 #rendring chat
@@ -98,3 +100,44 @@ def render_chat():
        elif isinstance(msg,AIMessage):
           with st.chat_message("assistant"):
              st.write(msg.content)
+
+# database SQLite
+@st.cache_resource
+def create_connection_table():
+   connection=sq.connect('app.db',check_same_thread=False)
+   cursor=connection.cursor()
+   cursor.execute('CREATE TABLE IF NOT EXISTS conversations (convo_title TEXT  UNIQUE,convo_id INTEGER PRIMARY KEY)')
+   cursor.execute('CREATE TABLE IF NOT EXISTS messages (each_msg TEXT ,role TEXT,msg_id INTEGER PRIMARY KEY ,convo_id INTEGER ,FOREIGN KEY (convo_id) references conversations(convo_id) )')
+   return connection,cursor
+
+def create_convo_table(connection,cursor,file_name):
+   # create conversation table 
+ 
+   # convo_title=[file_name]
+   cursor.execute('INSERT  INTO conversations (convo_title) VALUES (?)',(file_name,))
+   connection.commit()
+   conv_id=cursor.lastrowid #attribute
+   return conv_id
+def create_msgs_table(connection,cursor,convo_id,each_msg,role):
+
+   #each_msg,role
+   convo_id=st.session_state['conv_id']
+   convo_list=[each_msg,role,convo_id]
+   cursor.execute('INSERT INTO messages (each_msg,role,convo_id) VALUES(?,?,?)',convo_list)
+   connection.commit()
+
+
+def read_conversation(cursor):
+   result=cursor.execute('SELECT * FROM conversations')
+   fetched_res=result.fetchall()
+   return fetched_res
+   
+def read_msgs(cursor,convo_id):
+    msgs_res=cursor.execute('SELECT each_msg,role FROM messages WHERE convo_id=?',(convo_id,))
+    msgs_fetched_res=msgs_res.fetchall()
+    return msgs_fetched_res
+
+def delete_conversation(connection,cursor,convo_id):
+   cursor.execute('DELETE FROM messages WHERE convo_id=?',(convo_id,))
+   cursor.execute('DELETE FROM conversations WHERE convo_id=?',(convo_id,))
+   connection.commit()
