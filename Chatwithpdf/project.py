@@ -26,8 +26,8 @@ d_embed=[]
 q_embed=[]
 # sq.connect('app.db', check_same_thread=False).
 
-if "collection_name_id" not in st.session_state:
-   st.session_state["collection_name_id"]=str(uuid.uuid4())
+# if "collection_name_id" not in st.session_state:
+#    st.session_state["collection_name_id"]=str(uuid.uuid4())
 # State variables
 if "chat_started" not in st.session_state:
     st.session_state.chat_started = False
@@ -64,6 +64,7 @@ with st.sidebar:
   uploaded_file=st.file_uploader("Uplaod Your File",type="pdf")
   if uploaded_file:
     st.write("Source : ",uploaded_file.name)
+# database
   for row in  read_conversation(cursor):
       col1,col2=st.columns([4,1])
       with col1:
@@ -132,6 +133,7 @@ if user_query:
               
 
           bot_reply=ask_llm(query_result["documents"][0],user_query)
+          # each msg table
           create_msgs_table(connection,cursor, st.session_state['conv_id'],bot_reply, 'assistant')
 #rendring chat
 if not st.session_state.chat_started:

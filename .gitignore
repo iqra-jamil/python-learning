@@ -1,4 +1,4 @@
 myfirstproject/
 .env
-
+app.db
 __pycache__
